@@ -1,0 +1,14 @@
+.env
+*.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tmp/
+.cleanup_trash/
+.root_random_quarantine/
+.venv_quickstart*/
+*.log
+.git/

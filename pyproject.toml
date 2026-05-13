@@ -1,0 +1,32 @@
+[project]
+name = "streaming-memory-backend"
+version = "1.0.0"
+description = "FastAPI streaming memory backend with structured output and tool bridge"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115.0",
+    "numpy>=2.1.0",
+    "openai>=1.52.0",
+    "pydantic-settings>=2.6.0",
+    "redis>=5.2.0",
+    "requests>=2.32.0",
+    "sentence-transformers>=3.2.0",
+    "streamlit>=1.39.0",
+    "uvicorn[standard]>=0.30.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
