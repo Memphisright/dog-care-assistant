@@ -114,7 +114,7 @@ flowchart TD
 - RAG 索引构建
 - FastAPI 后端启动
 - Streamlit 前端调用
-- pytest 测试通过
+- `python -m pytest -q` 通过（当前为 `21 passed`）
 
 需要说明的是，python -m pip install -e .[dev] 的“冷启动安装验证”目前在这台机器上仍受到本机 Python 环境异常影响，主要表现为 Anaconda / TEMP / venv 相关问题。
 这类问题更偏向环境层，不代表 A+B 的业务逻辑、接口链路或运行结果存在阻塞性故障。
@@ -162,7 +162,7 @@ copy .env.example .env
 python scripts/build_rag_index.py
 ```
 
-当前仓库保留了 `knowledge/index/dog_basic_index.json` 作为示例索引；如果你更新了知识文档或 embedding 配置，可以重新执行上面的命令进行重建。
+当前仓库保留了 `knowledge/index/dog_basic_index.json` 作为示例索引。当前示例索引已按 `python scripts/build_rag_index.py` 重建，`embedding_model=BAAI/bge-small-zh-v1.5`，当前 `chunks=32`；如果你更新了知识文档或 embedding 配置，可以重新执行上面的命令进行重建。
 
 ### 4. 启动后端
 
@@ -253,6 +253,12 @@ docker run --name a-project-redis -p 6379:6379 -d redis:7-alpine
 - 独处训练基础
 - 基础清洁与梳理
 - 零食与训练奖励使用原则
+- 定点如厕训练基础
+- 牵引散步与户外适应
+- 啃咬行为与玩具管理
+- 新环境适应与安全感建立
+
+当前 `knowledge/dogs/` 下共保留 12 篇犬类低风险日常照护 markdown 文档，配套固定评测集位于 `tests/data/rag_eval_cases.jsonl`，当前共 22 条问题，用于覆盖 normal、training_behavior、boundary、no_coverage 四类场景。
 
 ### 高风险问题的当前处理方式
 
@@ -301,7 +307,7 @@ copy .env.example .env
 docker compose up --build
 ```
 
-在 Docker Compose 场景里，`app` 容器内的 `REDIS_URL` 会由 compose 显式覆盖为 `redis://redis:6379/0`，因此不需要修改 `.env.example` 中的本地默认值。
+当前 Docker Compose 的 `app + redis` 运行态已验证通过；在 Docker Compose 场景里，`app` 容器内的 `REDIS_URL` 会由 compose 显式覆盖为 `redis://redis:6379/0`，并可在容器内连通 Redis，因此不需要修改 `.env.example` 中的本地默认值。本地直接运行时仍使用 `redis://localhost:6379/0`。
 
 如果你后续要迁移到服务器，最小思路就是：
 - 准备 Redis
