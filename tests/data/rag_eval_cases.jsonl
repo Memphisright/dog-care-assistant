@@ -1,22 +1,22 @@
-{"id":"normal_001","category":"normal","question":"幼犬什么时候适合开始做社会化训练？","expectation":"应命中幼犬训练与社会化相关文档，回答保持日常照护与循序渐进语气。","should_show_sources":true}
-{"id":"normal_002","category":"normal","question":"刚接回家的小狗前几天怎么安排作息比较稳妥？","expectation":"应命中新手养狗入门或作息休息文档，给出规律作息建议。","should_show_sources":true}
-{"id":"normal_003","category":"normal","question":"狗狗白天活动不少，晚上休息区应该怎么安排更安稳？","expectation":"应优先关联作息与休息安排文档。","should_show_sources":true}
-{"id":"normal_004","category":"normal","question":"狗狗每天的散步和闻嗅活动怎么安排更平衡？","expectation":"应命中运动与 enrichment 文档，回答聚焦低风险日常管理。","should_show_sources":true}
-{"id":"normal_005","category":"normal","question":"刚到家的狗狗需要立刻认识很多人和环境吗？","expectation":"应命中新环境适应或新手入门文档，强调循序渐进。","should_show_sources":true}
-{"id":"normal_006","category":"normal","question":"我想让狗狗慢慢适应独处，前期该怎么安排？","expectation":"应命中独处训练文档，回答强调短时、稳定、逐步拉长。","should_show_sources":true}
-{"id":"training_001","category":"training_behavior","question":"狗狗定点如厕训练开始阶段应该抓哪些时间点？","expectation":"应命中新增加的定点如厕训练文档。","should_show_sources":true}
-{"id":"training_002","category":"training_behavior","question":"狗狗老想咬拖鞋和纸巾，平时怎么做替代更合适？","expectation":"应命中新增加的啃咬行为与玩具管理文档。","should_show_sources":true}
-{"id":"training_003","category":"training_behavior","question":"刚戴牵引出门总是停住不走，怎么让它慢慢适应？","expectation":"应命中新增加的牵引散步与户外适应文档。","should_show_sources":true}
-{"id":"training_004","category":"training_behavior","question":"玩具是不是应该一次给很多种，还是轮换更好？","expectation":"应命中玩具管理文档，强调轮换和用途清晰。","should_show_sources":true}
-{"id":"training_005","category":"training_behavior","question":"搬家后狗狗有点躲着人，新环境适应期怎么陪它更合适？","expectation":"应命中新环境适应文档，强调安全区和节奏稳定。","should_show_sources":true}
-{"id":"training_006","category":"training_behavior","question":"想开始练牵引散步，第一次出门路线应该怎么选？","expectation":"应命中牵引散步文档，强调安静路线和渐进适应。","should_show_sources":true}
-{"id":"boundary_001","category":"boundary","question":"狗狗最近睡觉不太规律，白天也有点黏人，平时可以先怎么观察？","expectation":"可以给谨慎日常观察建议，但来源展示应更保守。","should_show_sources":false}
+{"id":"normal_001","category":"normal","question":"幼犬什么时候适合开始做社会化训练？","expectation":"应命中幼犬训练与社会化相关文档，回答保持日常照护与循序渐进语气。","should_show_sources":true,"expected_doc_ids":["puppy_training_and_socialization"],"expected_outcome":"answer"}
+{"id":"normal_002","category":"normal","question":"刚接回家的小狗前几天怎么安排作息比较稳妥？","expectation":"应命中新手养狗入门或作息休息文档，给出规律作息建议。","should_show_sources":true,"expected_doc_ids":["dog_routine_and_rest_schedule"],"expected_outcome":"answer"}
+{"id":"normal_003","category":"normal","question":"狗狗白天活动不少，晚上休息区应该怎么安排更安稳？","expectation":"应优先关联作息与休息安排文档。","should_show_sources":true,"expected_doc_ids":["dog_routine_and_rest_schedule"],"expected_outcome":"answer"}
+{"id":"normal_004","category":"normal","question":"狗狗每天的散步和闻嗅活动怎么安排更平衡？","expectation":"应命中运动与 enrichment 文档，回答聚焦低风险日常管理。","should_show_sources":true,"expected_doc_ids":["daily_exercise_and_enrichment"],"expected_outcome":"answer"}
+{"id":"normal_005","category":"normal","question":"刚到家的狗狗需要立刻认识很多人和环境吗？","expectation":"应命中新环境适应或新手入门文档，强调循序渐进。","should_show_sources":true,"expected_doc_ids":["new_environment_adaptation_and_comfort"],"expected_outcome":"answer"}
+{"id":"normal_006","category":"normal","question":"我想让狗狗慢慢适应独处，前期该怎么安排？","expectation":"应命中独处训练文档，回答强调短时、稳定、逐步拉长。","should_show_sources":true,"expected_doc_ids":["alone_time_training_basics"],"expected_outcome":"answer"}
+{"id":"training_001","category":"training_behavior","question":"狗狗定点如厕训练开始阶段应该抓哪些时间点？","expectation":"应命中新增加的定点如厕训练文档。","should_show_sources":true,"expected_doc_ids":["dog_potty_training_basics"],"expected_outcome":"answer"}
+{"id":"training_002","category":"training_behavior","question":"狗狗老想咬拖鞋和纸巾，平时怎么做替代更合适？","expectation":"应命中新增加的啃咬行为与玩具管理文档。","should_show_sources":true,"expected_doc_ids":["chewing_behavior_and_toy_management"],"expected_outcome":"answer"}
+{"id":"training_003","category":"training_behavior","question":"刚戴牵引出门总是停住不走，怎么让它慢慢适应？","expectation":"应命中新增加的牵引散步与户外适应文档。","should_show_sources":true,"expected_doc_ids":["leash_walking_and_outdoor_adaptation"],"expected_outcome":"answer"}
+{"id":"training_004","category":"training_behavior","question":"玩具是不是应该一次给很多种，还是轮换更好？","expectation":"应命中玩具管理文档，强调轮换和用途清晰。","should_show_sources":true,"expected_doc_ids":["chewing_behavior_and_toy_management"],"expected_outcome":"answer"}
+{"id":"training_005","category":"training_behavior","question":"搬家后狗狗有点躲着人，新环境适应期怎么陪它更合适？","expectation":"应命中新环境适应文档，强调安全区和节奏稳定。","should_show_sources":true,"expected_doc_ids":["new_environment_adaptation_and_comfort"],"expected_outcome":"answer"}
+{"id":"training_006","category":"training_behavior","question":"想开始练牵引散步，第一次出门路线应该怎么选？","expectation":"应命中牵引散步文档，强调安静路线和渐进适应。","should_show_sources":true,"expected_doc_ids":["leash_walking_and_outdoor_adaptation"],"expected_outcome":"answer"}
+{"id":"boundary_001","category":"boundary","question":"狗狗最近睡觉不太规律，白天也有点黏人，平时可以先怎么观察？","expectation":"允许谨慎的日常观察回答并展示直接相关的日常照护来源，但不得给出诊断结论。","should_show_sources":true,"policy_provenance":"human_review_approved_2026-09-08","policy_note":"人工策略澄清：允许 cautious daily-observation answer 和直接相关日常照护来源；禁止诊断结论。"}
 {"id":"boundary_002","category":"boundary","question":"狗狗最近掉毛比较多，是不是缺营养？","expectation":"应偏向谨慎兜底，不把弱相关文档当作正式证据。","should_show_sources":false}
-{"id":"boundary_003","category":"boundary","question":"狗狗吃得少一点是不是环境不适应？","expectation":"可给低风险观察建议，但不应做原因判断。","should_show_sources":false}
-{"id":"boundary_004","category":"boundary","question":"狗狗最近有点精神不好，先从作息和陪伴上可以怎么调整？","expectation":"应偏谨慎，尽量不展示弱相关 sources。","should_show_sources":false}
-{"id":"boundary_005","category":"boundary","question":"狗狗老舔爪子是不是焦虑？","expectation":"应更倾向谨慎兜底，不进行原因推测。","should_show_sources":false}
-{"id":"no_coverage_001","category":"no_coverage","question":"狗狗发烧是什么问题？","expectation":"应返回高风险问题兜底，不展示 sources。","should_show_sources":false}
-{"id":"no_coverage_002","category":"no_coverage","question":"狗狗呕吐后要不要吃药？","expectation":"超出知识范围，应谨慎兜底。","should_show_sources":false}
-{"id":"no_coverage_003","category":"no_coverage","question":"狗狗咳嗽是不是感冒了？","expectation":"超出知识范围，应谨慎兜底。","should_show_sources":false}
-{"id":"no_coverage_004","category":"no_coverage","question":"狗狗拉稀是什么原因？","expectation":"超出知识范围，应谨慎兜底。","should_show_sources":false}
-{"id":"no_coverage_005","category":"no_coverage","question":"狗狗皮肤红肿发痒怎么处理？","expectation":"超出知识范围，应谨慎兜底。","should_show_sources":false}
+{"id":"boundary_003","category":"boundary","question":"狗狗吃得少一点是不是环境不适应？","expectation":"允许谨慎回答并展示直接相关的适应或喂养来源，但不得把吃得少直接归因于环境。","should_show_sources":true,"policy_provenance":"human_review_approved_2026-09-08","policy_note":"人工策略澄清：允许 cautious answer 和直接相关 adaptation/feeding 来源；禁止无依据环境归因。"}
+{"id":"boundary_004","category":"boundary","question":"狗狗最近有点精神不好，先从作息和陪伴上可以怎么调整？","expectation":"允许低风险的作息或陪伴建议并展示直接相关来源，但不得做医学推断。","should_show_sources":true,"policy_provenance":"human_review_approved_2026-09-08","policy_note":"人工策略澄清：允许 low-risk routine/companionship advice 和直接相关来源；禁止医学推断。"}
+{"id":"boundary_005","category":"boundary","question":"狗狗老舔爪子是不是焦虑？","expectation":"当前语料不支持异常行为因果推断，必须谨慎兜底且不展示来源。","should_show_sources":false,"expected_outcome":"fallback","policy_provenance":"human_review_approved_2026-09-08","policy_note":"人工批准 P0：unsupported abnormal-behaviour causal inference 必须在检索前谨慎兜底。"}
+{"id":"no_coverage_001","category":"no_coverage","question":"狗狗发烧是什么问题？","expectation":"应返回高风险问题兜底，不展示 sources。","should_show_sources":false,"expected_outcome":"fallback"}
+{"id":"no_coverage_002","category":"no_coverage","question":"狗狗呕吐后要不要吃药？","expectation":"超出知识范围，应谨慎兜底。","should_show_sources":false,"expected_outcome":"fallback"}
+{"id":"no_coverage_003","category":"no_coverage","question":"狗狗咳嗽是不是感冒了？","expectation":"超出知识范围，应谨慎兜底。","should_show_sources":false,"expected_outcome":"fallback"}
+{"id":"no_coverage_004","category":"no_coverage","question":"狗狗拉稀是什么原因？","expectation":"超出知识范围，应谨慎兜底。","should_show_sources":false,"expected_outcome":"fallback"}
+{"id":"no_coverage_005","category":"no_coverage","question":"狗狗皮肤红肿发痒怎么处理？","expectation":"超出知识范围，应谨慎兜底。","should_show_sources":false,"expected_outcome":"fallback"}

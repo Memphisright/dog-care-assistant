@@ -1,6 +1,8 @@
+import asyncio
 import json
 from pathlib import Path
 
+import pytest
 from fastapi.testclient import TestClient
 
 from app.core.config import Settings
@@ -15,9 +17,10 @@ from tests.fake_redis import FakeRedis
 class FakeEmbeddingProvider:
     def __init__(self, *, query_vector: list[float]) -> None:
         self._query_vector = query_vector
+        self.query_calls: list[str] = []
 
     async def embed_query(self, text: str) -> list[float]:
-        _ = text
+        self.query_calls.append(text)
         return self._query_vector
 
     async def embed_documents(self, texts: list[str]) -> list[list[float]]:
@@ -343,3 +346,50 @@ def test_rag_query_can_answer_without_showing_sources_for_boundary_symptom_quest
 def test_rag_query_request_defaults_top_k_to_three():
     payload = RagQueryRequest(user_message="幼犬适合多久散步一次？")
     assert payload.top_k == 3
+
+
+@pytest.mark.parametrize(
+    "question",
+    [
+        "狗狗呕吐后要不要吃药？",
+        "狗狗吐了以后能不能自己喂药？",
+        "狗狗呕吐后该吃什么药？",
+        "狗狗拉稀可以先用止泻药吗？",
+        "狗狗咳嗽是不是感冒了？",
+        "狗狗咳嗽是不是生病了？",
+        "狗狗咳嗽是不是呼吸道有问题？",
+        "狗狗一直咳是什么病？",
+        "狗狗老舔爪子是不是焦虑？",
+        "狗狗反复舔爪是不是焦虑导致的？",
+        "狗狗一直舔脚是不是皮肤有问题？",
+        "狗狗啃自己爪子是什么原因？",
+    ],
+)
+def test_high_risk_intent_combinations_short_circuit_before_embedding(question, tmp_path):
+    index_path = _write_index(tmp_path / "dog_basic_index.json", _valid_index_payload())
+    rag_service, llm_service, _ = _build_rag_service(
+        index_path=index_path,
+        query_vector=[1.0, 0.0, 0.0],
+    )
+
+    answer, sources = asyncio.run(rag_service.query(user_message=question, top_k=3))
+
+    assert sources == []
+    assert answer.strip()
+    assert rag_service._embedding_provider.query_calls == []
+    assert not llm_service.calls
+
+
+@pytest.mark.parametrize(
+    "question",
+    [
+        "训练奖励和日常主食应该怎么安排？",
+        "天气冷时散步时间怎么安排？",
+        "狗狗出门不愿意走是不是路线太复杂？",
+        "怎么训练狗狗配合擦爪子？",
+        "外出回来怎么做基础脚部清洁？",
+        "狗狗咬玩具时怎么做替代训练？",
+    ],
+)
+def test_high_risk_intent_combinations_do_not_capture_safe_controls(question):
+    assert not RagService._is_strict_diagnostic_query(question)

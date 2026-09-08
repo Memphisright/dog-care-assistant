@@ -79,6 +79,62 @@ class RagService:
         "是不是病了",
         "怎么处理",
     )
+    _MEDICATION_DECISION_CUES = (
+        "要不要",
+        "能不能",
+        "可不可以",
+        "是否可以",
+        "可以先",
+        "该吃什么",
+        "应该吃什么",
+        "需要吃什么",
+    )
+    _MEDICATION_ACTIONS = (
+        "吃药",
+        "喂药",
+        "用药",
+        "吃什么药",
+        "止泻药",
+        "抗生素",
+        "药物",
+    )
+    _DISEASE_INFERENCE_CUES = (
+        "是不是",
+        "是否",
+        "会不会",
+    )
+    _DIRECT_DISEASE_INFERENCE_PATTERNS = (
+        "是什么病",
+        "属于什么病",
+        "可能是什么病",
+    )
+    _DISEASE_TARGETS = (
+        "感冒",
+        "生病",
+        "疾病",
+        "感染",
+        "炎症",
+        "皮肤有问题",
+        "皮肤病",
+        "呼吸道有问题",
+        "呼吸道疾病",
+    )
+    _UNSUPPORTED_ABNORMAL_BEHAVIOURS = (
+        "舔爪",
+        "舔脚",
+        "啃爪",
+        "啃自己爪",
+        "咬爪",
+    )
+    _UNSUPPORTED_CAUSAL_INFERENCE_CUES = (
+        "是不是焦虑",
+        "是否焦虑",
+        "焦虑导致",
+        "是不是皮肤",
+        "是否皮肤",
+        "皮肤有问题",
+    )
+    _STRICT_SYMPTOM_SIGNALS = ("一直咳",)
     _ANSWER_SCORE_GAP = 0.08
     _ANSWER_SECONDARY_FLOOR = 0.36
     _SOURCE_SCORE_GAP = 0.06
@@ -140,7 +196,33 @@ class RagService:
 
     @classmethod
     def _is_strict_diagnostic_query(cls, user_message: str) -> bool:
-        return any(pattern in user_message for pattern in cls._STRICT_DIAGNOSTIC_PATTERNS)
+        if any(pattern in user_message for pattern in cls._STRICT_DIAGNOSTIC_PATTERNS):
+            return True
+
+        symptom_like = cls._is_symptom_or_abnormality_query(user_message) or any(
+            signal in user_message for signal in cls._STRICT_SYMPTOM_SIGNALS
+        )
+        medication_decision = any(
+            cue in user_message for cue in cls._MEDICATION_DECISION_CUES
+        ) and any(action in user_message for action in cls._MEDICATION_ACTIONS)
+        if symptom_like and medication_decision:
+            return True
+
+        disease_inference = any(
+            pattern in user_message for pattern in cls._DIRECT_DISEASE_INFERENCE_PATTERNS
+        ) or (
+            any(cue in user_message for cue in cls._DISEASE_INFERENCE_CUES)
+            and any(target in user_message for target in cls._DISEASE_TARGETS)
+        )
+        if symptom_like and disease_inference:
+            return True
+
+        unsupported_abnormal_cause = any(
+            behaviour in user_message for behaviour in cls._UNSUPPORTED_ABNORMAL_BEHAVIOURS
+        ) and any(
+            cue in user_message for cue in cls._UNSUPPORTED_CAUSAL_INFERENCE_CUES
+        )
+        return unsupported_abnormal_cause
 
     def _select_answer_hits(
         self,
